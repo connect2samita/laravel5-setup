@@ -19,23 +19,32 @@ class HomeController extends Controller
     }
 
     /**
+     * Verify user mail address.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // This should be moved to a User Controller maybe 
+    private function verify()
+    {
+        $id = Auth::id();
+        $user = User::find($id)->first();
+
+        if ($user->verification_token) {
+            return $verified = false;
+        }
+        else {
+            return $verified = true;
+        }
+    }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $id = Auth::id();
-        $user = User::find($id)->first();
-
-        if ($user->verification_token) {
-            $verified = false;
-        }
-        else {
-            $verified = true;
-        }
-
         return view('home')
-            ->with('verified', $verified);
+            ->with('verified', $this->verify());
     }
 }
