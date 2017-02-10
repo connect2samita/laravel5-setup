@@ -9,6 +9,11 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    @if ($verified)
+                      Email address verified
+                    @else
+                      Email address not verified
+                    @endif
                 </div>
             </div>
         </div>
