@@ -62,11 +62,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $verification_token = str_random(40);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'verification_token' => str_random(40),
+            'verification_token' => $verification_token,
         ]);
     }
 }

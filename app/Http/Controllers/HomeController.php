@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Mail\EmailVerification;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -23,7 +26,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // This should be moved to a User Controller maybe 
+    // This should be moved to a User Controller maybe
     private function verify()
     {
         $id = Auth::id();
@@ -34,6 +37,18 @@ class HomeController extends Controller
         }
         else {
             return $verified = true;
+        }
+    }
+
+    public function test(Request $request)
+    {
+        Mail::to($request->user())->send(new EmailVerification());
+
+        // check for failures
+        if (Mail::failures()) {
+            return count(Mail::failures());
+        } else {
+            return "Successful";
         }
     }
 

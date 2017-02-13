@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/test/mail', 'HomeController@test');
+
+Route::get('/test/env', function() {
+    return App::environment();
+});
