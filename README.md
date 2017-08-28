@@ -1,24 +1,26 @@
-# Auth-Profile
-Auth Profile is a web application setup using Laravel 5.
+# Laravel v5
+Authentication and User Profile ready to go web application setup using Laravel 5.
 
 # Installation
 #### Step 1: Clone repository and install dependencies or libraries
 
-    git clone https://github.com/connect2samita/Auth-Profile.git
+    git clone https://github.com/connect2samita/laravel5-setup.git
 
-    composer update
+    composer install
+    
+    php artisna key:generate
 
 
 
 #### Step 2: Configure project name in "app.php" file located inside "project_root/config/"
 
-    'name' => 'Auth Profile',
+    'name' => 'Laravel v5',
 
 
 
 #### Step 3: Create a database in mysql
 
-    CREATE DATABASE authprofile;
+    CREATE DATABASE database_name;
 
 
 
